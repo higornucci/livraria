@@ -2,14 +2,22 @@ package br.com.caelum.livraria.dao;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
 public class AutorDao {
 
-	private Banco banco = new Banco();
+	@Inject
+	private Banco banco;
+	
+	@PostConstruct
+	void aposCriacao() {
+		System.out.println("Acessei antes!");
+	}
 
 	public void salva(Autor autor) {
 		banco.save(autor);
