@@ -3,6 +3,7 @@ package br.com.caelum.livraria.bean;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.modelo.Autor;
@@ -10,8 +11,8 @@ import br.com.caelum.livraria.modelo.Autor;
 @Model
 public class AutorBean {
 	
+	@Inject private AutorDao dao = new AutorDao();
 	private Autor autor = new Autor();
-	private AutorDao dao = new AutorDao();
 	
 	public Autor getAutor() {
 		return autor;
