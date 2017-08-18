@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -20,6 +22,7 @@ public class AutorDao {
 		System.out.println("Acessei antes!");
 	}
 
+	@TransactionAttribute(TransactionAttributeType.MANDATORY)
 	public void salva(Autor autor) {
 		entityManager.persist(autor);
 	}

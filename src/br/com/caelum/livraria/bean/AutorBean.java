@@ -5,13 +5,12 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.modelo.Autor;
 
 @Model
 public class AutorBean {
 	
-	@Inject private AutorDao dao = new AutorDao();
+	@Inject private AutorService autorService;
 	private Autor autor = new Autor();
 	
 	public Autor getAutor() {
@@ -19,11 +18,11 @@ public class AutorBean {
 	}
 	
 	public void cadastra() {
-		this.dao.salva(autor);
+		this.autorService.adicionar(autor);
 		this.autor = new Autor();
 	}
 	
 	public List<Autor> getAutores() {
-		return this.dao.todosAutores();
+		return this.autorService.todosAutores();
 	}
 }
